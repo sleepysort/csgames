@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="isSortedG" sid="795647392810428" static="0" type="number">0</variable>
+        <variable constant="1" name="BORDER_WIDTH" sid="2518699340046407" static="0" type="number">1</variable>
+        <variable constant="0" name="elementWidth" sid="4855870954707486" static="0" type="number">0</variable>
+        <variable constant="0" name="numElements" sid="3780517996198542" static="0" type="number">0</variable>
+        <event-block sid="2219626184702417">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="785177467037319" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2022087661767748" type="System">
+                    <param id="0" name="Variable">numElements</param>
+                    <param id="1" name="Value">10 + int(random(10))</param>
+                </action>
+                <action id="-9" name="Set value" sid="4750826966051145" type="System">
+                    <param id="0" name="Variable">elementWidth</param>
+                    <param id="1" name="Value">bg.Width / numElements</param>
+                </action>
+                <action id="1" name="Set size" sid="565933847979414" type="sortingArray">
+                    <param id="0" name="Width">numElements</param>
+                    <param id="1" name="Height">1</param>
+                    <param id="2" name="Depth">1</param>
+                </action>
+                <action id="0" name="Call function" sid="5915850434044358" type="Function">
+                    <param id="0" name="Name">&quot;setPointerToIndex&quot;</param>
+                    <param id="1" name="Parameter {n}">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4449926281728358" type="sortedText">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="1426093569532219">
+                    <conditions>
+                        <condition id="3" name="For each element" sid="7799511038240923" type="sortingArray">
+                            <param id="0" name="Axes">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set at X" sid="2458148192892546" type="sortingArray">
+                            <param id="0" name="X">sortingArray.CurX</param>
+                            <param id="1" name="Value">5 + int(random(20))</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1237387959342627">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="2117101280048168" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="9385400432940224" type="Function">
+                            <param id="0" name="Name">&quot;drawBars&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2760159161270947">
+            <conditions>
+                <condition id="0" name="On clicked" sid="9310708889194965" type="moveButton" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="9070092164335039">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="7046961567103877" type="pointer">
+                            <param id="0" name="Instance variable">ptrInd</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">numElements - 2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="4618434898542166" type="pointer">
+                            <param id="0" name="Instance variable">ptrInd</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4927189201346353">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="8597407520256274" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="7006572277518311" type="pointer">
+                            <param id="0" name="Instance variable">ptrInd</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5970276146594953">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="4975992789024278" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="8862438122942922" type="Function">
+                            <param id="0" name="Name">&quot;setPointerToIndex&quot;</param>
+                            <param id="1" name="Parameter {n}">pointer.ptrInd</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="9524845963479225">
+            <conditions>
+                <condition id="0" name="On clicked" sid="9966066985366846" type="swapButton" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="temp" sid="4961994810848589" static="0" type="number">0</variable>
+                <event-block sid="8629974064027604">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="834317912852404" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="6735637955114232" type="System">
+                            <param id="0" name="Variable">temp</param>
+                            <param id="1" name="Value">sortingArray.At(pointer.ptrInd)</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="3647009394499225" type="sortingArray">
+                            <param id="0" name="X">pointer.ptrInd</param>
+                            <param id="1" name="Value">sortingArray.At((pointer.ptrInd + 1) % numElements)</param>
+                        </action>
+                        <action id="2" name="Set at X" sid="9897063203487271" type="sortingArray">
+                            <param id="0" name="X">pointer.ptrInd + 1</param>
+                            <param id="1" name="Value">temp</param>
+                        </action>
+                        <action id="0" name="Call function" sid="3008947089297772" type="Function">
+                            <param id="0" name="Name">&quot;drawBars&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="0" name="Call function" sid="661561283459873" type="Function">
+                            <param id="0" name="Name">&quot;isSorted&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="1517331625961862" title="Functions">
+            <sub-events>
+                <event-block sid="5410124268886656">
+                    <conditions>
+                        <condition id="0" name="On function" sid="183511012313503" type="Function">
+                            <param id="0" name="Name">&quot;setPointerToIndex&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="6687411804416244" type="pointer">
+                            <param id="0" name="Instance variable">ptrInd</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="7318446581139406" type="pointer">
+                            <param id="0" name="X">bg.X + pointer.ptrInd * elementWidth + elementWidth /2</param>
+                            <param id="1" name="Y">bg.Y + 20</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5220291060526106">
+                    <conditions>
+                        <condition id="0" name="On function" sid="7574238541217226" type="Function">
+                            <param id="0" name="Name">&quot;drawBars&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="4868545348440721">
+                            <conditions>
+                                <condition id="-19" name="Pick all" sid="3439375682834744" type="System">
+                                    <param id="0" name="Object">bar</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="6684139233490398" type="bar" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="1430405319859183">
+                            <conditions>
+                                <condition id="3" name="For each element" sid="4922321210525468" type="sortingArray">
+                                    <param id="0" name="Axes">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="7437761984748669" type="System">
+                                    <param id="0" name="Object to create">bar</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">bg.X + (sortingArray.CurX  * elementWidth) + BORDER_WIDTH</param>
+                                    <param id="3" name="Y">bg.Y</param>
+                                </action>
+                                <action id="-7" name="Set size" sid="4483114527390421" type="bar">
+                                    <param id="0" name="Width">elementWidth - 2 * BORDER_WIDTH</param>
+                                    <param id="1" name="Height">sortingArray.CurValue * 10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="1639278384054358">
+            <conditions>
+                <condition id="0" name="On function" sid="5333168565180151" type="Function">
+                    <param id="0" name="Name">&quot;isSorted&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable comment="0 is false" constant="0" name="isSorted" sid="5962204033655291" static="0" type="number">1</variable>
+                <event-block sid="809060078334735">
+                    <conditions>
+                        <condition id="-10" name="For" sid="6885757891549142" type="System">
+                            <param id="0" name="Name">&quot;for in sortingArray&quot;</param>
+                            <param id="1" name="Start index">0</param>
+                            <param id="2" name="End index">numElements - 2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6644565051199736">
+                            <conditions>
+                                <condition id="0" name="Compare at X" sid="6592782340117932" type="sortingArray">
+                                    <param id="0" name="X">loopindex</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">sortingArray.At(loopindex + 1)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="6377899865443639" type="System">
+                                    <param id="0" name="Variable">isSorted</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="5020305212261244">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2745748667705856" type="System">
+                            <param id="0" name="Variable">isSorted</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="6478737399983745" type="sortedText">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9175697695317677">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="7922274801600578" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="2579397944949863" type="sortedText">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
